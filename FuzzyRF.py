@@ -244,6 +244,7 @@ class FuzzyRFTrainer:
         return (a_full.reshape(n_classes, self.rows, self.cols),
                 b_full.reshape(n_classes, self.rows, self.cols))
 
+    @staticmethod
     def _method_of_moments(mean, var):
         eps     = np.float32(1e-6)
         mean    = np.clip(mean, eps, 1.0 - eps)
@@ -298,6 +299,7 @@ class FuzzyRFGenerator:
             print(f"Warning: Zarr store format is '{fmt}', expected 'log_float16'. "
                   f"Retrain with this version of FuzzyRFTrainer to use float16 storage.")
 
+    @classmethod
     def from_trainer(cls, trainer: FuzzyRFTrainer, zarr_path: str):
         trainer.save(zarr_path)
         return cls(zarr_path)
