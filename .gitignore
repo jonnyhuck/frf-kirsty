@@ -1,0 +1,5 @@
+__pycache__/
+kirsty_data/
+*.zip
+test.py
+.DS_Store
